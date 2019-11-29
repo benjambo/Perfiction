@@ -135,24 +135,33 @@ input.error {
   font-weight: lighter;
 }
 `
-const formValid = (formErrors) => {
-    let valid = true
+// Function to validate if input is acceptable
+    const formValid = ({ formErrors, ...rest}) => {
+        let valid = true
 
-    Object.values(formErrors).forEach(val => {
-        val.length > 0 && (valid = false)
-    })
+        // Validate form errors being empty
+        Object.values(formErrors).forEach(val => {
+            val.length > 0 && (valid = false)
+        })
 
-    return valid
-}
+        // Validate form if it isn't filled out
+        Object.values(rest).forEach(val => {
+            val === null && (valid = false)
+        })
 
-const emailRegex = RegExp(
-    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-  )
+        return valid
+    }
+
+    // An email validation code
+    const emailRegex = RegExp(
+        /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    )
 
   export class SignUp extends Component {
     constructor(props) {
       super(props)
 
+      // The state of the form to begin with
         this.state = {
             firstName: null,
             lastName: null,
@@ -167,10 +176,12 @@ const emailRegex = RegExp(
         }
     }
 
+    // The submit handler
     handleSubmit = event => {
         event.preventDefault()
 
-        if (formValid(this.state.formErrors)) {
+        // If the format is valid print this to Console
+        if (formValid(this.state)) {
             console.log(`
             --SUBMITTING--
             First Name: ${this.state.firstName}
@@ -179,15 +190,17 @@ const emailRegex = RegExp(
             Password: ${this.state.password}
             `)
         } else {
-            console.log('FORM INVALID - DISPLAY ERROR MESSAGE');
+            console.log('INVALID FORM - ERROR MESSAGE');
         }
     }
-
+    
+    // The Change handler
     handleChange = event => {
         event.preventDefault()
         const { name, value } = event.target
         let formErrors = this.state.formErrors
 
+        // Swith statement for form input rules
         switch (name) {
             case 'firstName':
                 formErrors.firstName = value.length < 2
@@ -221,6 +234,7 @@ const emailRegex = RegExp(
 
     render() {
 
+    // Initializing formErrors property for it to be able to be used
     const { formErrors } = this.state
 
     return (
@@ -253,6 +267,9 @@ const emailRegex = RegExp(
                                 noValidate
                                 onChange={this.handleChange}
                             />
+                            {formErrors.lastName.length > 0 && (
+                                <span className="errorMessage">{formErrors.lastName}</span>
+                            )}
                         </div>
                         <div className="email">
                             <label htmlFor="email">Email</label>
@@ -264,6 +281,9 @@ const emailRegex = RegExp(
                                 noValidate
                                 onChange={this.handleChange}
                             />
+                            {formErrors.email.length > 0 && (
+                                <span className="errorMessage">{formErrors.email}</span>
+                            )}
                         </div>
                         <div className="password">
                             <label htmlFor="password">Password</label>
@@ -275,6 +295,9 @@ const emailRegex = RegExp(
                                 noValidate
                                 onChange={this.handleChange}
                             />
+                            {formErrors.password.length > 0 && (
+                                <span className="errorMessage">{formErrors.password}</span>
+                            )}
                         </div>
                         <div className="createAccount">
                             <button type="submit">Create Account</button>

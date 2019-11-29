@@ -10,7 +10,6 @@ const Styles = styled.div`
         text-align: center;
         background-color: #2B303A;
         color: white;
-        
     }
 
     ul {
