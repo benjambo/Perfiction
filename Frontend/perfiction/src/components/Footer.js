@@ -22,8 +22,8 @@ export const Footer = () => {
         <li>
           <strong className="otsikot">INFO</strong>
         </li>
-        <li>info@cuporoast.cof</li>
-        <li>+358411234567</li>
+        <li>info@perf.com</li>
+        <li>040 547349</li>
         <li>Availability on weekdays:</li>
         <li>9:00 - 16:00</li>
       </ul>

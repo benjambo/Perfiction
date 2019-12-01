@@ -1,6 +1,7 @@
 import React from 'react';
 import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
 import styled from 'styled-components';
+import auth from './auth';
 
 const Styles = styled.div`
     .navbar {
@@ -26,7 +27,7 @@ const Styles = styled.div`
     }
     `;
 
-export const NavigationBar = () => (
+export const NavigationBar = props => (
   <Styles>
     <Navbar expand="lg" fixed="top">
       <Navbar.Brand href="/">Perfiction</Navbar.Brand>
@@ -34,13 +35,26 @@ export const NavigationBar = () => (
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           <Nav.Item>
-            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/home">Home</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link href="/catalog">Catalog</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link href="/about">About</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link
+              onClick={() => {
+                auth.logout(() => {
+                  props.history.push('/');
+                });
+              }}
+              className="logout"
+              href="/"
+            >
+              Logout
+            </Nav.Link>
           </Nav.Item>
         </Nav>
         <Form inline>

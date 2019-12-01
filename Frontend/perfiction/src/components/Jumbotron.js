@@ -10,6 +10,7 @@ const Styles = styled.div`
         color: white;
         height: 600px;
         z-index: -2;
+        margin: 0;
     }
 
     .overlay {
