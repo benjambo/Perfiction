@@ -1,7 +1,7 @@
 import React from 'react';
 import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
 import styled from 'styled-components';
-import auth from './auth';
+//import auth from './auth';
 
 const Styles = styled.div`
     .navbar {
@@ -27,10 +27,10 @@ const Styles = styled.div`
     }
     `;
 
-export const NavigationBar = props => (
+export const NavigationBar = () => (
   <Styles>
     <Navbar expand="lg" fixed="top">
-      <Navbar.Brand href="/">Perfiction</Navbar.Brand>
+      <Navbar.Brand href="/home">Perfiction</Navbar.Brand>
       <Navbar.Toggle area-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
@@ -45,11 +45,11 @@ export const NavigationBar = props => (
           </Nav.Item>
           <Nav.Item>
             <Nav.Link
-              onClick={() => {
+              /*onClick={() => {
                 auth.logout(() => {
-                  props.history.push('/');
+                  this.props.history.push('/');
                 });
-              }}
+              }}*/
               className="logout"
               href="/"
             >

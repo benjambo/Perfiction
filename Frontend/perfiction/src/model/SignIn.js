@@ -56,8 +56,8 @@ const emailRegex = RegExp(
 );
 
 export class SignIn extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     // The state of the form to begin with
     this.state = {

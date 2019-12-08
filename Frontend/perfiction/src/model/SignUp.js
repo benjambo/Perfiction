@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Spring } from 'react-spring/renderprops';
 import { Nav, Navbar } from 'react-bootstrap';
 import auth from '../components/auth';
+import userService from '../services/accounts';
 import styled from 'styled-components';
 
 const Styles = styled.div`
@@ -33,6 +34,15 @@ const Styles = styled.div`
     }
     `;
 
+let users = [
+  {
+    firstName: 'Benjamin',
+    lastName: 'Bow',
+    email: 'boy@com',
+    password: 'benjambo'
+  }
+];
+
 // Function to validate if input is acceptable
 const formValid = ({ formErrors, ...rest }) => {
   let valid = true;
@@ -58,6 +68,10 @@ const emailRegex = RegExp(
 export class SignUp extends Component {
   constructor(props) {
     super(props);
+
+    /*userService.getAll().then(initialUsers => {
+      users(initialUsers);
+    });*/
 
     // The state of the form to begin with
     this.state = {
@@ -87,6 +101,18 @@ export class SignUp extends Component {
             Email: ${this.state.email}
             Password: ${this.state.password}
             `);
+
+      userService
+        .create({
+          firstName: this.state.firstName,
+          lastName: this.state.lastName,
+          email: this.state.email,
+          password: this.state.password
+        })
+        .then(createdUser => {
+          users.concat(createdUser);
+        });
+
       auth.login(() => {
         this.props.history.push('/home');
       });
@@ -174,7 +200,9 @@ export class SignUp extends Component {
                   <div className="lastName">
                     <label htmlFor="lastName">Last Name</label>
                     <input
-                      className=""
+                      className={
+                        formErrors.lastName.length > 0 ? 'error' : null
+                      }
                       placeholder="Last Name"
                       type="text"
                       name="lastName"
@@ -190,7 +218,7 @@ export class SignUp extends Component {
                   <div className="email">
                     <label htmlFor="email">Email</label>
                     <input
-                      className=""
+                      className={formErrors.email.length > 0 ? 'error' : null}
                       placeholder="Email"
                       type="email"
                       name="email"
@@ -204,7 +232,9 @@ export class SignUp extends Component {
                   <div className="password">
                     <label htmlFor="password">Password</label>
                     <input
-                      className=""
+                      className={
+                        formErrors.password.length > 0 ? 'error' : null
+                      }
                       placeholder="Password"
                       type="password"
                       name="password"

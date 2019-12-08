@@ -9,7 +9,7 @@ import { NoMatch } from './model/NoMatch';
 import { Layout } from './components/Layout';
 import { Footer } from './components/Footer';
 import { Spring } from 'react-spring/renderprops';
-import { ProtectedRoute } from './components/protected.route';
+//import { ProtectedRoute } from './components/ProtectedRoute';
 
 const App = () => {
   return (
@@ -23,9 +23,9 @@ const App = () => {
             <Spring from={{ marginTop: -500 }} to={{ marginTop: 0 }}>
               {props => (
                 <div style={props}>
-                  <ProtectedRoute exact path="/home" component={Home} />
-                  <ProtectedRoute exact path="/catalog" component={Catalog} />
-                  <ProtectedRoute exact path="/about" component={About} />
+                  <Route exact path="/home" component={Home} />
+                  <Route exact path="/catalog" component={Catalog} />
+                  <Route exact path="/about" component={About} />
                 </div>
               )}
             </Spring>
