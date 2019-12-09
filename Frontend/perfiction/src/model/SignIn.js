@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Spring } from 'react-spring/renderprops';
 import { Nav, Navbar } from 'react-bootstrap';
 import auth from '../components/auth';
+import axios from 'axios';
 import styled from 'styled-components';
 
 const Styles = styled.div`
@@ -44,7 +45,7 @@ const formValid = ({ formErrors, ...rest }) => {
 
   // Validate form if it isn't filled out
   Object.values(rest).forEach(val => {
-    val === null && (valid = false);
+    val === '' && (valid = false);
   });
 
   return valid;
@@ -61,8 +62,8 @@ export class SignIn extends Component {
 
     // The state of the form to begin with
     this.state = {
-      email: null,
-      password: null,
+      email: '',
+      password: '',
       formErrors: {
         email: '',
         password: ''
@@ -76,11 +77,20 @@ export class SignIn extends Component {
 
     // If the format is valid print this to Console
     if (formValid(this.state)) {
-      console.log(`
-            --LOGGING TO--
-            Email: ${this.state.email}
-            Password: ${this.state.password}
-            `);
+      const oldUser = {
+        email: this.state.email,
+        password: this.state.password
+      };
+
+      axios
+        .post('/', oldUser)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
       auth.login(() => {
         this.props.history.push('/home');
       });
@@ -91,7 +101,6 @@ export class SignIn extends Component {
 
   // The Change handler
   handleChange = event => {
-    event.preventDefault();
     const { name, value } = event.target;
     let formErrors = this.state.formErrors;
 
@@ -114,7 +123,7 @@ export class SignIn extends Component {
 
   render() {
     // Initializing formErrors property for it to be able to be used
-    const { formErrors } = this.state;
+    const { email, password, formErrors } = this.state;
 
     return (
       <Styles>
@@ -136,15 +145,15 @@ export class SignIn extends Component {
             <div style={props} className="wrapper">
               <div className="form-wrapper">
                 <h1>Sign In</h1>
-                <form className="forms" onSubmit={this.handleSubmit} noValidate>
+                <form action="/" className="forms" onSubmit={this.handleSubmit}>
                   <div className="email">
                     <label htmlFor="email">Email</label>
                     <input
-                      className=""
+                      className={formErrors.email.length > 0 ? 'error' : null}
                       placeholder="Email"
                       type="email"
                       name="email"
-                      noValidate
+                      value={email}
                       onChange={this.handleChange}
                     />
                     {formErrors.email.length > 0 && (
@@ -154,11 +163,13 @@ export class SignIn extends Component {
                   <div className="password">
                     <label htmlFor="password">Password</label>
                     <input
-                      className=""
+                      className={
+                        formErrors.password.length > 0 ? 'error' : null
+                      }
                       placeholder="Password"
                       type="password"
                       name="password"
-                      noValidate
+                      value={password}
                       onChange={this.handleChange}
                     />
                     {formErrors.password.length > 0 && (

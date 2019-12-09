@@ -5,6 +5,12 @@
       "lastName": "Bow",
       "email": "boy@com",
       "password": "benjambo"
+    },
+    {
+      "firstName": "Jere",
+      "lastName": "Sar",
+      "email": "jes@com",
+      "password": "saarlej"
     }
   ]
 }

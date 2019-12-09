@@ -6,17 +6,17 @@ class Auth {
   login(cb) {
     this.authenticated = true;
     cb();
-    console.log('---LOGIN---', this.authenticated);
+    //console.log('---LOGIN---', this.authenticated);
   }
 
   logout(cb) {
     this.authenticated = false;
     cb();
-    console.log('---LOGOUT---', this.authenticated);
+    //console.log('---LOGOUT---', this.authenticated);
   }
 
   isAuthenticated() {
-    console.log('--Auhtentication--', this.authenticated);
+    //console.log('--Auhtentication--', this.authenticated);
     return this.authenticated;
   }
 }

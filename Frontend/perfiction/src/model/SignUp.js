@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Spring } from 'react-spring/renderprops';
 import { Nav, Navbar } from 'react-bootstrap';
 import auth from '../components/auth';
-import userService from '../services/accounts';
+import axios from 'axios';
+//import userService from '../services/accounts';
 import styled from 'styled-components';
 
 const Styles = styled.div`
@@ -34,15 +35,6 @@ const Styles = styled.div`
     }
     `;
 
-let users = [
-  {
-    firstName: 'Benjamin',
-    lastName: 'Bow',
-    email: 'boy@com',
-    password: 'benjambo'
-  }
-];
-
 // Function to validate if input is acceptable
 const formValid = ({ formErrors, ...rest }) => {
   let valid = true;
@@ -54,7 +46,7 @@ const formValid = ({ formErrors, ...rest }) => {
 
   // Validate form if it isn't filled out
   Object.values(rest).forEach(val => {
-    val === null && (valid = false);
+    val === '' && (valid = false);
   });
 
   return valid;
@@ -69,16 +61,13 @@ export class SignUp extends Component {
   constructor(props) {
     super(props);
 
-    /*userService.getAll().then(initialUsers => {
-      users(initialUsers);
-    });*/
-
     // The state of the form to begin with
     this.state = {
-      firstName: null,
-      lastName: null,
-      email: null,
-      password: null,
+      //users: userArray,
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
       formErrors: {
         firstName: '',
         lastName: '',
@@ -86,6 +75,8 @@ export class SignUp extends Component {
         password: ''
       }
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   // The submit handler
@@ -94,24 +85,35 @@ export class SignUp extends Component {
 
     // If the format is valid print this to Console
     if (formValid(this.state)) {
-      console.log(`
-            --SUBMITTING--
-            First Name: ${this.state.firstName}
-            Last Name: ${this.state.lastName}
-            Email: ${this.state.email}
-            Password: ${this.state.password}
-            `);
+      /*const { users } = this.state;
+      this.setState({
+        users: [...users]
+      });
 
-      userService
-        .create({
-          firstName: this.state.firstName,
-          lastName: this.state.lastName,
-          email: this.state.email,
-          password: this.state.password
+      users.push({
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        password: this.state.password
+      });*/
+
+      const newUser = {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        password: this.state.password
+      };
+
+      axios
+        .post('/signup', newUser)
+        .then(res => {
+          console.log(res);
         })
-        .then(createdUser => {
-          users.concat(createdUser);
+        .catch(err => {
+          console.log(err);
         });
+
+      console.log(this.state);
 
       auth.login(() => {
         this.props.history.push('/home');
@@ -151,12 +153,16 @@ export class SignUp extends Component {
         break;
     }
 
-    this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+    this.setState({
+      formErrors,
+      [name]: value
+    }); /*, () => console.log(this.state));*/
   };
 
   render() {
     // Initializing formErrors property for it to be able to be used
-    const { formErrors } = this.state;
+    const { firstName, lastName, email, password, formErrors } = this.state;
+    //const { users } = this.state;
 
     return (
       <Styles>
@@ -178,7 +184,11 @@ export class SignUp extends Component {
             <div style={props} className="wrapper">
               <div className="form-wrapper">
                 <h1>Create Account</h1>
-                <form className="forms" onSubmit={this.handleSubmit} noValidate>
+                <form
+                  action="/signup"
+                  className="forms"
+                  onSubmit={this.handleSubmit}
+                >
                   <div className="firstName">
                     <label htmlFor="firstName">First Name</label>
                     <input
@@ -188,7 +198,7 @@ export class SignUp extends Component {
                       placeholder="First Name"
                       type="text"
                       name="firstName"
-                      noValidate
+                      value={firstName}
                       onChange={this.handleChange}
                     />
                     {formErrors.firstName.length > 0 && (
@@ -206,7 +216,7 @@ export class SignUp extends Component {
                       placeholder="Last Name"
                       type="text"
                       name="lastName"
-                      noValidate
+                      value={lastName}
                       onChange={this.handleChange}
                     />
                     {formErrors.lastName.length > 0 && (
@@ -222,7 +232,7 @@ export class SignUp extends Component {
                       placeholder="Email"
                       type="email"
                       name="email"
-                      noValidate
+                      value={email}
                       onChange={this.handleChange}
                     />
                     {formErrors.email.length > 0 && (
@@ -238,7 +248,7 @@ export class SignUp extends Component {
                       placeholder="Password"
                       type="password"
                       name="password"
-                      noValidate
+                      value={password}
                       onChange={this.handleChange}
                     />
                     {formErrors.password.length > 0 && (
