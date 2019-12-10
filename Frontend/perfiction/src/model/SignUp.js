@@ -115,9 +115,9 @@ export class SignUp extends Component {
 
       console.log(this.state);
 
-      auth.login(() => {
+      /*auth.login(() => {
         this.props.history.push('/home');
-      });
+      });*/
     } else {
       console.log('INVALID FORM - ERROR MESSAGE');
     }

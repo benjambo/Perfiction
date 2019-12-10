@@ -3,6 +3,7 @@ const path = require('path')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
+const bcrypt = require('bcryptjs')
 
 const app = express()
 
@@ -26,6 +27,9 @@ app.use(
     ].join(' ')
   })
 )
+
+// User model
+const User = require('./models/User')
 
 // DB Config
 const db = require('./config/keys').MongoURI
@@ -96,6 +100,43 @@ app.get('/about', (req, res) => {
 app.post('/signup', (req, res) => {
   res.sendFile(__dirname + '/build/index.html')
   const { firstName, lastName, email, password } = req.body
+  const errors = []
+
+  User.findOne({ email: email }).then(user => {
+    if (user) {
+      // User exists
+      res.render('signup', {
+        errors,
+        firstName,
+        lastName,
+        email,
+        password
+      })
+    } else {
+      const newUser = new User({
+        firstName,
+        lastName,
+        email,
+        password
+      })
+
+      // Hash Password
+      bcrypt.genSalt(10, (err, salt) =>
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err
+          // Set password to hashed
+          newUser.password = hash
+          // Save user
+          newUser
+            .save()
+            .then(user => {
+              res.redirect('/home')
+            })
+            .catch(err => console.log(err))
+        })
+      )
+    }
+  })
 })
 
 const PORT = process.env.PORT || 5000
