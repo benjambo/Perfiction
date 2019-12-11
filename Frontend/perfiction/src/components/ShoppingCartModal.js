@@ -6,6 +6,11 @@ import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CartItem from './CartItem'
 
+/**
+ * 
+ * 
+ * @returns Popup window when button is clicked
+ */
 const MyVerticallyCenteredModal= () => {
     const [show, setShow] = useState(false);
     const [cart, setCart] = useContext(CartContext);
@@ -25,6 +30,10 @@ const MyVerticallyCenteredModal= () => {
         handleClose();
       }
 
+      /**
+       * create items for pop up window if shopping cart is not empty
+       * @returns CartItem products
+       */
     const Items = () =>{
       //if list is null return shopping cart is empty
     if(shoppingList == null){

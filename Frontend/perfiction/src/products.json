@@ -2,8 +2,8 @@
     "products": [
       {
         "id": 1,
-        "itemNro": 18644119330491312,
-        "image": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
+        "itemNro": 186441193451312,
+        "image": "https://images.pexels.com/photos/347144/pexels-photo-347144.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
         "name": "Cappuchino",
         "description": "Cappuchino",
         "price": 2,
@@ -12,8 +12,8 @@
   
       {
         "id": 2,
-        "itemNro": 18644119330491312,
-        "image": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
+        "itemNro": 1862349330491312,
+        "image": "https://images.pexels.com/photos/585754/pexels-photo-585754.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
         "name": "Black Coffee",
         "description": "Black Coffee",
         "price": 5,
@@ -21,7 +21,7 @@
       },
       {
         "id": 3,
-        "itemNro": 18644119330491312,
+        "itemNro": 18644119330491234,
         "image": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
         "name": "Latte",
         "description": "Latte",
@@ -30,8 +30,8 @@
       },
       {
         "id": 4,
-        "itemNro": 18644119330491312,
-        "image": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
+        "itemNro": 1864411933049643,
+        "image": "https://images.pexels.com/photos/685527/pexels-photo-685527.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
         "name": "Espresso",
         "description": "Espresso",
         "price": 5,
@@ -39,8 +39,8 @@
       },
       {
         "id": 5,
-        "itemNro": 18644119330491312,
-        "image": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
+        "itemNro": 18644119330422342,
+        "image": "https://images.pexels.com/photos/2615323/pexels-photo-2615323.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
         "name": "Ice Coffee",
         "description": "Cold coffee",
         "price": 6,
@@ -48,10 +48,65 @@
       },
       {
         "id": 6,
-        "itemNro": 18644119330491312,
-        "image": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
+        "itemNro": 18644119334566,
+        "image": "https://images.pexels.com/photos/1417945/pexels-photo-1417945.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
         "name": "Tea",
         "description": "Tea",
+        "price": 2,
+        "isFreeShipping": true
+      },
+      {
+        "id": 7,
+        "itemNro": 1864411933045672,
+        "image": "https://images.pexels.com/photos/1214212/pexels-photo-1214212.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
+        "name": "Fabric bag",
+        "description": "High quality bag",
+        "price": 2,
+        "isFreeShipping": true
+      },
+  
+      {
+        "id": 8,
+        "itemNro": 18644119323462,
+        "image": "https://images.pexels.com/photos/593328/pexels-photo-593328.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
+        "name": "Coffee Maker",
+        "description": "High quality",
+        "price": 30,
+        "isFreeShipping": true
+      },
+      {
+        "id": 9,
+        "itemNro": 1864411933235436,
+        "image": "https://images.pexels.com/photos/1824760/pexels-photo-1824760.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
+        "name": "GingerBread",
+        "description": "Great with coffee!",
+        "price": 1,
+        "isFreeShipping": true
+      },
+      {
+        "id": 10,
+        "itemNro": 186441193305678567,
+        "image": "https://images.pexels.com/photos/1207918/pexels-photo-1207918.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
+        "name": "Coffee cup",
+        "description": "very nice cup",
+        "price": 5,
+        "isFreeShipping": true
+      },
+      {
+        "id": 11,
+        "itemNro": 186441193345664,
+        "image": "https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
+        "name": "Coffee beans",
+        "description": "1kg of coffee beans",
+        "price": 6,
+        "isFreeShipping": true
+      },
+      {
+        "id": 12,
+        "itemNro": 18644119330496677,
+        "image": "https://images.pexels.com/photos/69976/pexels-photo-69976.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=400",
+        "name": "Filter paper",
+        "description": "Filter paper",
         "price": 2,
         "isFreeShipping": true
       }

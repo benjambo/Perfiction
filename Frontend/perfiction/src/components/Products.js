@@ -2,6 +2,11 @@ import React, {useContext} from 'react'
 import { CartContext } from './CartContext';
 //import {Image, Transformation} from 'cloudinary-react';
 
+/**
+ * 
+ * @param {Json files} param0 
+ * @returns product with image link
+ */
 const Products = ({prod}) =>{
     const [cart, setCart] = useContext(CartContext);
 
@@ -13,9 +18,12 @@ const Products = ({prod}) =>{
         var shoppingList = [];
     }
 
+    /**
+     * add product info to local storage and cart array
+     */
     const addToCart = () =>{
-        const tshirt = { name: prod.name, price: prod.price, id: prod.id};
-        setCart(currentState => [...currentState, tshirt]);  
+        const coffee = { name: prod.name, price: prod.price, id: prod.id};
+        setCart(currentState => [...currentState, coffee]);  
         
         shoppingList.push(tshirt);
         //put to local storage

@@ -1,13 +1,14 @@
 import React from 'react'
 
+/**
+ * 
+ * @param {array} param0 
+ * @returns CartItem
+ */
 const CartItem = ({cart}) =>{
-    console.log("cart")
-    console.log(cart)
-
     const removeItem = () =>{
         
     }
-
     return(
         <div>
             {cart.name} {cart.price}€ <button onClick={removeItem}>X</button>
