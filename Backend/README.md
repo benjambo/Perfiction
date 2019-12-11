@@ -12,13 +12,19 @@
 
 > Backend for perfiction webapp
 
-### 🏠 [Homepage](https://perfiction.herokuapp.com/home)
-
-### ✨ [Demo](https://perfiction.herokuapp.com/)
+### ✨ [Demo](https://perfiction.herokuapp.com/home)
 
 ## Prerequisites
 
 - node 12.13.0
+- bcryptjs ^2.4.3
+- cors ^2.8.5
+- express ^4.17.1
+- express-session ^1.17.0
+- mongoose ^5.7.14
+- morgan ^1.9.1
+- passport ^0.4.1
+- passport-local ^1.0.0
 
 ## Install
 
@@ -29,7 +35,7 @@ npm install
 ## Usage
 
 ```sh
-npm start,      #For node start
+npm start       #For node start
 npm run dev     #For nodemon start
 ```
 
@@ -41,10 +47,11 @@ npm test        #Runs tests with Jest
 
 ## Author
 
-👤 **Benjamin Bowo**
+👤 **Benjamin Bowo & Jere Saarelma**
 
 - Github: [@benjambo](https://github.com/benjambo)
+- Github: [@jepu32](https://github.com/jepu32)
 
 ## Show your support
 
-Give a ⭐️ if this project helped you!
+Give a ⭐️ if you enjoyed this project!
