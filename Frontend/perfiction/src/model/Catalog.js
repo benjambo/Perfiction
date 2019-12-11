@@ -1,8 +1,11 @@
 import React from 'react';
 import { Jumbotron } from '../components/Jumbotron';
 import { NavigationBar } from '../components/NavigationBar';
+import ProductGallery from '../components/ProductGallery';
+import '../App.css';
 
 export const Catalog = () => {
+
   return (
     <div>
       <NavigationBar />
@@ -18,6 +21,8 @@ export const Catalog = () => {
           detail. And some visual element should indicate the size of the
           product.
         </p>
+        <ProductGallery></ProductGallery>
+        <br/>
         <h3>Product Details</h3>
         <p>
           A picture is great, but, visitors also want to read about your

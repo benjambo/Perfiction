@@ -195,3 +195,12 @@ input.error {
 .logout {
   font-weight: lighter;
 }
+/*for grid component*/
+.grid-container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 50px;
+}
+

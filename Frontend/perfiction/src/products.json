@@ -1,0 +1,59 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "itemNro": 18644119330491312,
+        "image": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
+        "name": "Cappuchino",
+        "description": "Cappuchino",
+        "price": 2,
+        "isFreeShipping": true
+      },
+  
+      {
+        "id": 2,
+        "itemNro": 18644119330491312,
+        "image": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
+        "name": "Black Coffee",
+        "description": "Black Coffee",
+        "price": 5,
+        "isFreeShipping": true
+      },
+      {
+        "id": 3,
+        "itemNro": 18644119330491312,
+        "image": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
+        "name": "Latte",
+        "description": "Latte",
+        "price": 4,
+        "isFreeShipping": true
+      },
+      {
+        "id": 4,
+        "itemNro": 18644119330491312,
+        "image": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
+        "name": "Espresso",
+        "description": "Espresso",
+        "price": 5,
+        "isFreeShipping": true
+      },
+      {
+        "id": 5,
+        "itemNro": 18644119330491312,
+        "image": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
+        "name": "Ice Coffee",
+        "description": "Cold coffee",
+        "price": 6,
+        "isFreeShipping": true
+      },
+      {
+        "id": 6,
+        "itemNro": 18644119330491312,
+        "image": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200",
+        "name": "Tea",
+        "description": "Tea",
+        "price": 2,
+        "isFreeShipping": true
+      }
+    ]
+  }
