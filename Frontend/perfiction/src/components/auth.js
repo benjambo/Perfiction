@@ -4,19 +4,18 @@ class Auth {
   }
 
   login(cb) {
+    console.log('---LOGIN---', this.authenticated);
     this.authenticated = true;
     cb();
-    //console.log('---LOGIN---', this.authenticated);
   }
 
   logout(cb) {
+    console.log('---LOGOUT---', this.authenticated);
     this.authenticated = false;
     cb();
-    //console.log('---LOGOUT---', this.authenticated);
   }
 
   isAuthenticated() {
-    //console.log('--Auhtentication--', this.authenticated);
     return this.authenticated;
   }
 }

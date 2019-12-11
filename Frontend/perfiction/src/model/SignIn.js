@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Spring } from 'react-spring/renderprops';
 import { Nav, Navbar } from 'react-bootstrap';
-import auth from '../components/auth';
 import axios from 'axios';
+//import auth from '../components/auth';
 import styled from 'styled-components';
 
 const Styles = styled.div`
@@ -83,8 +83,13 @@ export class SignIn extends Component {
       };
 
       axios
-        .post('/', oldUser)
+        .post('http://localhost:5000', oldUser)
         .then(res => {
+          if (res.status === 200) {
+            window.location = '/home';
+          } else {
+            window.location = '/';
+          }
           console.log(res);
         })
         .catch(err => {

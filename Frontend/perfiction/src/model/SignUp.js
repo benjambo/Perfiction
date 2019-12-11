@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Spring } from 'react-spring/renderprops';
 import { Nav, Navbar } from 'react-bootstrap';
-import auth from '../components/auth';
 import axios from 'axios';
 //import userService from '../services/accounts';
 import styled from 'styled-components';
@@ -105,19 +104,19 @@ export class SignUp extends Component {
       };
 
       axios
-        .post('/signup', newUser)
+        .post('http://localhost:5000/signup', newUser)
         .then(res => {
+          if (res.status === 200) {
+            window.location = '/';
+          } else {
+            window.location = '/signup';
+          }
           console.log(res);
         })
         .catch(err => {
           console.log(err);
         });
-
       console.log(this.state);
-
-      /*auth.login(() => {
-        this.props.history.push('/home');
-      });*/
     } else {
       console.log('INVALID FORM - ERROR MESSAGE');
     }
