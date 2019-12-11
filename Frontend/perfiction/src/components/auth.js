@@ -4,13 +4,11 @@ class Auth {
   }
 
   login(cb) {
-    console.log('---LOGIN---', this.authenticated);
     this.authenticated = true;
     cb();
   }
 
   logout(cb) {
-    console.log('---LOGOUT---', this.authenticated);
     this.authenticated = false;
     cb();
   }

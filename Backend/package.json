@@ -1,14 +1,16 @@
 {
   "name": "Backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend for perfiction webapp",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "jest --verbose"
   },
-  "keywords": [],
+  "keywords": [
+    "heroku"
+  ],
   "author": "Benjamin Bowo",
   "license": "ISC",
   "dependencies": {
@@ -28,5 +30,8 @@
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "engines": {
+    "node": "12.13.0"
   }
 }

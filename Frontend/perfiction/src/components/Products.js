@@ -10,7 +10,9 @@ import { CartContext } from './CartContext';
 const Products = ({ prod }) => {
   const [cart, setCart] = useContext(CartContext);
 
-  console.log(cart);
+  if (!cart) {
+    console.log('No cart');
+  }
   //get shopping list
   var shoppingList = JSON.parse(localStorage.getItem('shoppingList'));
 

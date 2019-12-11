@@ -15,20 +15,7 @@ const cors = require('cors')
 app.use(express.static('build'))
 app.use(cors())
 
-app.use(
-  morgan(function(tokens, req, res) {
-    return [
-      tokens.method(req, res),
-      tokens.url(req, res),
-      tokens.status(req, res),
-      tokens.res(req, res, 'content-length'),
-      '-',
-      tokens['response-time'](req, res),
-      'ms',
-      JSON.stringify(req.body)
-    ].join(' ')
-  })
-)
+app.use(morgan('tiny'))
 
 // User model
 const User = require('./models/User')
@@ -129,6 +116,7 @@ app.post('/signup', (req, res) => {
 
 // Signin Handle
 app.post('/', (req, res, next) => {
+  //res.sendFile(__dirname + '/build/index.html')
   passport.authenticate('local', {
     successRedirect: '/home',
     failureRedirect: '/'
@@ -136,10 +124,10 @@ app.post('/', (req, res, next) => {
 })
 
 // Logout Handle
-app.get('/logout', (req, res) => {
+/*app.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/')
-})
+})*/
 
 const PORT = process.env.PORT || 5000
 

@@ -103,10 +103,6 @@ export class SignIn extends Component {
         .catch(err => {
           console.log(err);
         });
-
-      /*auth.login(() => {
-        this.props.history.push('/home');
-      });*/
     } else {
       console.log('INVALID FORM - ERROR MESSAGE');
     }

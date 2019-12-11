@@ -43,6 +43,11 @@
   background-color: rgba(0, 0, 0, 0.9);
   color: white;
 }
+img {
+  padding: 2vh;
+  height: auto;
+  width: 80%;
+}
 
 .column {
   float: left;
@@ -57,6 +62,9 @@
 @media screen and (max-width: 1000px) {
   .column {
     width: 100%;
+  }
+
+  img {
   }
 }
 
