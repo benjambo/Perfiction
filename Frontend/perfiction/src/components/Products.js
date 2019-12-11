@@ -15,7 +15,7 @@ const Products = ({prod}) =>{
 
     //create new list if null
     if(shoppingList==null){
-        var shoppingList = [];
+        shoppingList = [];
     }
 
     /**
@@ -25,7 +25,7 @@ const Products = ({prod}) =>{
         const coffee = { name: prod.name, price: prod.price, id: prod.id};
         setCart(currentState => [...currentState, coffee]);  
         
-        shoppingList.push(tshirt);
+        shoppingList.push(coffee);
         //put to local storage
         localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
     }
