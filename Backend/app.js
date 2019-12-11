@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const bcrypt = require('bcryptjs')
+const passport = require('passport')
+//const { ensureAuthenticated } = require('./config/auth')
 
 const app = express()
 
@@ -31,35 +33,27 @@ app.use(
 // User model
 const User = require('./models/User')
 
+// Passport config
+require('./config/passport')(passport)
+
 // DB Config
 const db = require('./config/keys').MongoURI
 
 // Bodyparser
 app.use(express.urlencoded({ extended: false }))
 
+// Passport middleware
+app.use(passport.initialize())
+app.use(passport.session())
+
 // Connect to MongoDB
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(console.log('MongoDB connected...'))
   .catch(err => console.log(err))
+
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'build')))
-
-// Accounts
-let account = [
-  {
-    firstName: 'Benjamin',
-    lastName: 'Bow',
-    email: 'boy@com',
-    password: 'benjambo'
-  },
-  {
-    firstName: 'Jere',
-    lastName: 'Saar',
-    email: 'saar@com',
-    password: 'saarej'
-  }
-]
 
 // An api endpoint that returns a user
 app.get('/api/user', (req, res) => {
@@ -100,18 +94,12 @@ app.get('/about', (req, res) => {
 app.post('/signup', (req, res) => {
   res.sendFile(__dirname + '/build/index.html')
   const { firstName, lastName, email, password } = req.body
-  const errors = []
 
   User.findOne({ email: email }).then(user => {
+    // User exists
     if (user) {
-      // User exists
-      res.render('signup', {
-        errors,
-        firstName,
-        lastName,
-        email,
-        password
-      })
+      //res.status(404)
+      console.log('--- EMAIL ALREADY EXISTS ---')
     } else {
       const newUser = new User({
         firstName,
@@ -130,13 +118,27 @@ app.post('/signup', (req, res) => {
           newUser
             .save()
             .then(user => {
-              res.redirect('/home')
+              console.log(user)
             })
             .catch(err => console.log(err))
         })
       )
     }
   })
+})
+
+// Signin Handle
+app.post('/', (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: '/home',
+    failureRedirect: '/'
+  })(req, res, next)
+})
+
+// Logout Handle
+app.get('/logout', (req, res) => {
+  req.logout()
+  res.redirect('/')
 })
 
 const PORT = process.env.PORT || 5000

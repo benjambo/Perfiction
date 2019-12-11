@@ -1,7 +1,7 @@
 import React from 'react';
 import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
 import styled from 'styled-components';
-//import auth from './auth';
+import auth from './auth';
 
 const Styles = styled.div`
     .navbar {
@@ -45,11 +45,11 @@ export const NavigationBar = () => (
           </Nav.Item>
           <Nav.Item>
             <Nav.Link
-              /*onClick={() => {
+              onClick={() => {
                 auth.logout(() => {
                   this.props.history.push('/');
                 });
-              }}*/
+              }}
               className="logout"
               href="/"
             >
