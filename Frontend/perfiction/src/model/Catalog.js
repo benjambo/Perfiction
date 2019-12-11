@@ -2,10 +2,8 @@ import React from 'react';
 import { Jumbotron } from '../components/Jumbotron';
 import { NavigationBar } from '../components/NavigationBar';
 import ProductGallery from '../components/ProductGallery';
-import '../App.css';
 
 export const Catalog = () => {
-
   return (
     <div>
       <NavigationBar />
@@ -22,7 +20,7 @@ export const Catalog = () => {
           product.
         </p>
         <ProductGallery></ProductGallery>
-        <br/>
+        <br />
         <h3>Product Details</h3>
         <p>
           A picture is great, but, visitors also want to read about your

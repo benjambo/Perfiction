@@ -32,6 +32,10 @@ const Styles = styled.div`
       color white;
       margin: 2vh 2vw 2vh 2vw;
     }
+
+    .navbar-light .navbar-brand {
+      color: white;
+    }
     `;
 
 // Function to validate if input is acceptable

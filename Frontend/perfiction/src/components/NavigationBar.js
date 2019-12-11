@@ -25,7 +25,24 @@ const Styles = styled.div`
             color: #690505;
         }
     }
-    `;
+
+    .navbar-light .navbar-nav .nav-link {
+      color: white;
+
+      &:hover {
+            color: #690505;
+        }
+    }
+
+    .navbar-light .navbar-brand {
+      color: white;
+
+      &:hover {
+            color: #690505;
+        }
+    }
+  
+  `;
 
 export const NavigationBar = () => (
   <Styles>

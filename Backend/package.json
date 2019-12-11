@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose"
   },
   "keywords": [],
   "author": "Benjamin Bowo",
@@ -23,6 +23,10 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "jest": "^24.9.0",
     "nodemon": "^2.0.1"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
