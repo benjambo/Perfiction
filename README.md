@@ -43,6 +43,38 @@ REST-API        #Frontend -> Backend -> Database, Check more in Backend-folder R
 npm test        #Runs tests with Jest
 ```
 
+## REST-API
+
+```sh
+GET: #Used to request data from the server, typically used to read data
+
+app.get('/signup', (req, res) => {
+  res.sendFile(__dirname + '/build/index.html')
+  //console.log(req.body)
+})
+
+POST #Used to submit data, typically used to create new entities or edit already existing entities
+
+app.post('/signup', (req, res) => {
+  res.sendFile(__dirname + '/build/index.html')
+  const { firstName, lastName, email, password } = req.body
+      const newUser = new User({
+        firstName,
+        lastName,
+        email,
+        password
+      })
+      // Save user
+       newUser
+        .save()
+        .then(user => {
+        console.log(user)
+       })
+        .catch(err => console.log(err))
+})
+
+```
+
 ## Author
 
 👤 **Benjamin Bowo & Jere Saarelma**
